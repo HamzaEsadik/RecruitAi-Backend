@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Post extends Model
 {
@@ -13,7 +14,6 @@ class Post extends Model
         'skills',
         'city',
         'min_experience',
-        'education_level',
         'access_token',
         'share',
         'dashboard',
@@ -23,14 +23,13 @@ class Post extends Model
 
     protected $casts = [
         'skills' => 'array',
-        'min_experience' => 'integer',
-        'education_level' => 'integer'
+        'min_experience' => 'integer'
     ];
     
     /**
      * Get the applies for the post.
      */
-    public function applies()
+    public function applies(): HasMany
     {
         return $this->hasMany(Apply::class);
     }

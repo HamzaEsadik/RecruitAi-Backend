@@ -19,10 +19,10 @@ class ResumeService
         // Extract text based on file type
         if ($fileExtension === 'pdf') {
             $parser = new Parser();
-            $pdf = $parser->parseFile(storage_path('app/private/' . $resumePath));
+            $pdf = $parser->parseFile(storage_path('app/public/' . $resumePath));
             $extractedText = $pdf->getText();
         } else if (in_array($fileExtension, ['doc', 'docx'])) {
-            $phpWord = IOFactory::load(storage_path('app/private/' . $resumePath));
+            $phpWord = IOFactory::load(storage_path('app/public/' . $resumePath));
             $sections = $phpWord->getSections();
             foreach ($sections as $section) {
                 foreach ($section->getElements() as $element) {

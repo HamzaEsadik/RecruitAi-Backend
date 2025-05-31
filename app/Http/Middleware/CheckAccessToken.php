@@ -17,8 +17,9 @@ class CheckAccessToken
     public function handle(Request $request, Closure $next): Response
     {
         $accessToken = $request->query('access_token');
+        $dashboard = $request->route('dashboard');
 
-        if (!$accessToken || !Post::where('access_token', $accessToken)->exists()) {
+        if (!$accessToken || !Post::where('access_token', $accessToken)->where('dashboard', $dashboard)->exists()) {
             return response()->json(['error' => 'Unauthorized'], 401);
         }
 

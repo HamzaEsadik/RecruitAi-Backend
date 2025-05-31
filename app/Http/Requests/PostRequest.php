@@ -28,7 +28,6 @@ class PostRequest extends FormRequest
             'skills' => 'required|json',
             'city' => 'required|string|max:255',
             'min_experience' => 'required|integer|min:0',
-            'education_level' => 'required|integer|min:0',
         ];
     }
 }

@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Apply extends Model
 {
@@ -11,19 +13,21 @@ class Apply extends Model
         'email',
         'phone',
         'resume-path',
-        'post_id'
+        'post_id',
+        'is_favorite'
     ];
 
     protected $casts = [
-        'post_id' => 'integer'
+        'post_id' => 'integer',
+        'is_favorite' => 'boolean'
     ];
 
-    public function detail()
+    public function detail(): HasOne
     {
         return $this->hasOne(Detail::class);
     }
 
-    public function post()
+    public function post(): BelongsTo
     {
         return $this->belongsTo(Post::class);
     }

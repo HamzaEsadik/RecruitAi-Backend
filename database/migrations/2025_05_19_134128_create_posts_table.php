@@ -6,9 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('posts', function (Blueprint $table) {
@@ -19,7 +16,6 @@ return new class extends Migration
             $table->json('skills');
             $table->string('city');
             $table->integer('min_experience');
-            $table->integer('education_level');
             $table->string('access_token');
             $table->string('share');
             $table->string('dashboard');
@@ -27,9 +23,6 @@ return new class extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('posts');

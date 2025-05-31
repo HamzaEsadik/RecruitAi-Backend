@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('resume-path');
             $table->unsignedBigInteger('post_id');
             $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
+            $table->boolean('is_favorite')->default(false);
             $table->timestamps();
         });
     }

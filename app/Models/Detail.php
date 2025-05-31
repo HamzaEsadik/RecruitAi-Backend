@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Detail extends Model
 {
@@ -24,7 +25,7 @@ class Detail extends Model
         'apply_id' => 'integer'
     ];
 
-    public function apply()
+    public function apply(): BelongsTo
     {
         return $this->belongsTo(Apply::class);
     }
