@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('share');
             $table->string('dashboard');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

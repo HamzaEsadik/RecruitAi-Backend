@@ -21,6 +21,7 @@ return new class extends Migration
             $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
             $table->boolean('is_favorite')->default(false);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

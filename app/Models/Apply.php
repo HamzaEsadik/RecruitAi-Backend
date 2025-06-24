@@ -5,9 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Apply extends Model
 {
+    use SoftDeletes;
+
     protected $fillable = [
         'name',
         'email',
@@ -21,6 +24,8 @@ class Apply extends Model
         'post_id' => 'integer',
         'is_favorite' => 'boolean'
     ];
+
+    protected $dates = ['deleted_at'];
 
     public function detail(): HasOne
     {

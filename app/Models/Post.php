@@ -4,9 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Post extends Model
 {
+    use SoftDeletes;
+
     protected $fillable = [
         'token',
         'title',
@@ -25,6 +28,8 @@ class Post extends Model
         'skills' => 'array',
         'min_experience' => 'integer'
     ];
+
+    protected $dates = ['deleted_at'];
     
     /**
      * Get the applies for the post.
