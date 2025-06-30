@@ -61,7 +61,6 @@ class ApplyController extends Controller
 
             $jobDescription = $post->description;
 
-            // Short, strict prompt for AI score
             $prompt = "Compare the resume and job post. Extract skills, years of experience, and give:\n- skills_match: 0-1 (skills overlap)\n- ai_score: 0-10 (overall fit, be VERY strict, 0 for poor fit, 10 for perfect, do not give high scores unless truly deserved). Return JSON as schema.\nResume:\n{$extractedText}\nJob:\n{$jobDescription}";
 
             $geminiResponse = $this->geminiApiService->callGeminiApi($post->token, $prompt, $detailSchema);
